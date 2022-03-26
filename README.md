@@ -5,3 +5,11 @@
 - SQL, JDBC
 - Garbage Collection
 - ООД
+
+##Блок 1. Структуры данных и алгоритмы.
+- Iterator
+- Generic
+- List
+- Set
+- Map
+- Tree
