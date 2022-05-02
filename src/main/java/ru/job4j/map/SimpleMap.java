@@ -3,6 +3,7 @@ package ru.job4j.map;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class SimpleMap<K, V> implements Map<K, V> {
 
@@ -61,10 +62,9 @@ public class SimpleMap<K, V> implements Map<K, V> {
     @Override
     public V get(K key) {
         V rsl = null;
-        if (key == null) {
-            rsl = table[0].value;
-        } else if (table[indexFor(hash(key.hashCode()))] != null) {
-            rsl = table[indexFor(hash(key.hashCode()))].value;
+        int i = key == null ? 0 : indexFor(hash(key.hashCode()));
+        if (table[i] != null && Objects.equals(table[i].key, key)) {
+            rsl = table[i].value;
         }
         return rsl;
     }
@@ -72,8 +72,8 @@ public class SimpleMap<K, V> implements Map<K, V> {
     @Override
     public boolean remove(K key) {
         boolean rsl = false;
-        int i = indexFor(hash(key.hashCode()));
-        if (table[i] != null) {
+        int i = key == null ? 0 : indexFor(hash(key.hashCode()));
+        if (table[i] != null && Objects.equals(table[i].key, key)) {
             table[i] = null;
             rsl = true;
             count--;
