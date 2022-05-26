@@ -16,7 +16,7 @@ public class Analysis {
                 if (!isWorked && start == null) {
                     start = sd[1];
                 } else if (isWorked && start != null) {
-                    out.println(start + ";" + sd[1]);
+                    out.println(start + ";" + sd[1] + ";");
                     start = null;
                 }
             }
