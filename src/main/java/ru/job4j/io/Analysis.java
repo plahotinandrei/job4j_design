@@ -12,7 +12,7 @@ public class Analysis {
             boolean isWorked;
             while (read.ready()) {
                 String[] sd = read.readLine().split(" ", 2);
-                isWorked = sd[0].equals("200") || sd[0].equals("300");
+                isWorked = "200".equals(sd[0]) || "300".equals(sd[0]);
                 if (!isWorked && start == null) {
                     start = sd[1];
                 } else if (isWorked && start != null) {
