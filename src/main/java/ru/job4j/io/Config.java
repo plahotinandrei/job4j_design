@@ -23,7 +23,9 @@ public class Config {
                     .forEach((el) -> {
                         String[] keys = el.split("=", 2);
                         if (keys.length < 2 || keys[0].matches("^\\s*$") || keys[1].matches("^\\s*$")) {
-                            throw new IllegalArgumentException();
+                            throw new IllegalArgumentException(
+                                    "File " + this.path + " does not match pattern key=value"
+                            );
                         }
                         values.put(keys[0], keys[1]);
                     });
