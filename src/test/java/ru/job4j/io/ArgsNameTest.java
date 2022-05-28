@@ -45,4 +45,14 @@ public class ArgsNameTest {
     public void whenKeyEmpty() {
         ArgsName jvm = ArgsName.of(new String[] {"-=ded"});
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenNotArgument() {
+        ArgsName jvm = ArgsName.of(new String[] {});
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenValueEmpty() {
+        ArgsName jvm = ArgsName.of(new String[] {"-Xmx:512"});
+    }
 }
