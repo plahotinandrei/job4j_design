@@ -26,5 +26,11 @@ public class Search {
                     "Root folder or file extension is null. Usage java -jar search.jar ROOT_FOLDER FILE_EXTENSION ."
             );
         }
+        if (!Files.isDirectory(Paths.get(params[0]))) {
+            throw new IllegalArgumentException(String.format("%s is not a directory", params[0]));
+        }
+        if (!params[1].startsWith(".")) {
+            throw new IllegalArgumentException("The file extension must start with .");
+        }
     }
 }
