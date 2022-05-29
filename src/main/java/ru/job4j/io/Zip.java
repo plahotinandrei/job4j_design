@@ -1,6 +1,7 @@
 package ru.job4j.io;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -35,7 +36,21 @@ public class Zip {
         }
     }
 
+    private static void paramsValid(String[] params) {
+        if (params.length < 3) {
+            throw new IllegalArgumentException("Not all arguments entered");
+        }
+        ArgsName jvm = ArgsName.of(params);
+        if (!Files.isDirectory(Paths.get(jvm.get("d")))) {
+            throw new IllegalArgumentException(String.format("%s is not a directory", jvm.get("d")));
+        }
+        if (!jvm.get("e").startsWith(".")) {
+            throw new IllegalArgumentException("The file extension must start with .");
+        }
+    }
+
     public static void main(String[] args) throws IOException {
+        paramsValid(args);
         Zip zip = new Zip();
         zip.packSingleFile(
                 new File("./pom.xml"),
