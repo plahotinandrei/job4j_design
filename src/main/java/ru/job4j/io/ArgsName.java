@@ -7,6 +7,10 @@ public class ArgsName {
 
     private final Map<String, String> values = new HashMap<>();
 
+    public int size() {
+        return values.entrySet().size();
+    }
+
     public String get(String key) {
         if (!values.containsKey(key)) {
             throw new IllegalArgumentException(String.format("Key %s not found", key));
