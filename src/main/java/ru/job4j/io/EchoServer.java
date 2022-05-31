@@ -16,10 +16,10 @@ public class EchoServer {
                     for (String str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
                         System.out.println(str);
                         if (str.matches(".*[?, &]msg=Hello[\\s, &].*")) {
-                            out.write("Hello".getBytes());
+                            out.write("Hello\r\n".getBytes());
                         }
                         if (str.matches(".*[?, &]msg=What[\\s, &].*")) {
-                            out.write("What".getBytes());
+                            out.write("What\r\n".getBytes());
                         }
                         if (str.matches(".*[?, &]msg=Exit[\\s, &].*")) {
                             server.close();
