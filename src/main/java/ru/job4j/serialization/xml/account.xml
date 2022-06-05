@@ -1,0 +1,18 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<account login="user12" id="234" subscription="false">
+    <user sex="false" age="30">
+        <contact phone="11-111"/>
+        <statuses>
+            <status>Worker</status>
+            <status>Married</status>
+        </statuses>
+    </user>
+    <frends>
+        <frend sex="false" age="27">
+            <contact phone="22-131"/>
+            <statuses>
+                <status>Student</status>
+            </statuses>
+        </frend>
+    </frends>
+</account>
