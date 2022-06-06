@@ -8,19 +8,19 @@ import java.util.Arrays;
 public class Account {
 
     @XmlAttribute
-    String login;
+    private String login;
 
-    Person user;
-
-    @XmlAttribute
-    int id;
+    private Person user;
 
     @XmlAttribute
-    boolean subscription;
+    private int id;
+
+    @XmlAttribute
+    private boolean subscription;
 
     @XmlElementWrapper
     @XmlElement(name = "friend")
-    Person[] friends;
+    private Person[] friends;
 
     public Account() {
 
