@@ -3,11 +3,11 @@ package ru.job4j.serialization.json;
 import java.util.Arrays;
 
 public class Account {
-    String login;
-    Person user;
-    int id;
-    boolean subscription;
-    Person[] friends;
+    private final String login;
+    private final Person user;
+    private final int id;
+    private final boolean subscription;
+    private final Person[] friends;
 
     public Account(String login, Person user, int id, boolean subscription, Person[] friends) {
         this.login = login;
@@ -15,6 +15,26 @@ public class Account {
         this.id = id;
         this.subscription = subscription;
         this.friends = friends;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public Person getUser() {
+        return user;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public boolean isSubscription() {
+        return subscription;
+    }
+
+    public Person[] getFriends() {
+        return friends;
     }
 
     @Override
