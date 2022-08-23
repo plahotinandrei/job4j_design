@@ -1,6 +1,6 @@
 create table type(
     id serial primary key,
-    name varchar(255),
+    name varchar(255)
 );
 
 create table product(
@@ -26,18 +26,20 @@ insert into product(name, type_id, expired_date, price)
     ('молоко топленое', 2, '2022-10-21', 115),
     ('сыр творожный Violette', 1, '2022-10-15', 102);
 
-select * from product where type_id = 1;
+select p.name, t.name as type, expired_date, price from product as p
+    join type as t on p.type_id = t.id
+    where t.name = 'Сыр';
 select * from product where name like '%мороженое%';
 select * from product where expired_date < current_date;
-select name, type_id, expired_date, price
-    from product
-    group by name, type_id, expired_date, price
-    having price = (select max(price) from product);
+select * from product
+    where price = (select max(price) from product);
 select t.name as имя_типа, count(p.id) as количество
     from product as p
     join type as t on p.type_id = t.id
     group by t.name;
-select * from product where type_id = 1 or type_id = 2;
+select p.name, t.name as type, expired_date, price from product as p
+    join type as t on p.type_id = t.id
+    where t.name = 'Сыр' or t.name = 'Молоко';
 select t.name as имя_типа, count(p.id) as количество
     from product as p
     join type as t on p.type_id = t.id
