@@ -24,11 +24,8 @@ public class ImportDB {
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
             rd.lines().forEach((s) -> {
                 String[] data = s.split(";", 2);
-                if (data.length >= 2) {
-                    users.add(new User(
-                            data[0].isEmpty() ? null : data[0],
-                            data[1].isEmpty() ? null : data[1]
-                    ));
+                if (data.length == 2 && !"".equals(data[0].trim()) && !"".equals(data[1].trim())) {
+                    users.add(new User(data[0], data[1]));
                 } else {
                     throw new IllegalArgumentException(String.format("invalid line in %s", dump));
                 }

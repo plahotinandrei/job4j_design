@@ -1,4 +1,2 @@
 Petr Arsentev;parsentev@yandex.ru;
 Ivan Ivanov;iivanov@gmail.com;
-Dmitry Smirnov;
-;plahotin@yandex.ru;
