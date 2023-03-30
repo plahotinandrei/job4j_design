@@ -15,7 +15,7 @@ public abstract class AbstractCache<K, V> {
     public final V get(K key) {
         cache.computeIfPresent(key, (k, v) -> v.get() == null ? new SoftReference<>(load(k)) : v);
         SoftReference<V> ref = cache.getOrDefault(key, cache.put(key, new SoftReference<>(load(key))));
-        return ref == null ? null : ref.get();
+        return ref.get();
     }
 
     protected abstract V load(K key);
