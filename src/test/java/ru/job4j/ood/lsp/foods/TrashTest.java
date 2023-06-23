@@ -1,10 +1,6 @@
 package ru.job4j.ood.lsp.foods;
 
 import org.junit.jupiter.api.Test;
-import ru.job4j.ood.lsp.Food;
-import ru.job4j.ood.lsp.Store;
-import ru.job4j.ood.lsp.Trash;
-
 import java.util.Calendar;
 import static org.assertj.core.api.Assertions.*;
 
