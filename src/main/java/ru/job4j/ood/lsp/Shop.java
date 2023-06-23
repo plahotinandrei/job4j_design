@@ -1,36 +1,28 @@
 package ru.job4j.ood.lsp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Shop extends AbstractStore {
 
-    private final List<Food> foods = new ArrayList<>();
-
     @Override
     public void add(Food food) {
-        if (isExpired(75, 100, food)) {
+        if (isExpired(DISCOUNT_FROM, TRASH_FROM, food)) {
             food.setPrice(getDiscountPrice(food));
         }
-        if (isExpired(25, 100, food)) {
-            foods.add(food);
+        if (isExpired(SHOP_FROM, TRASH_FROM, food)) {
+            super.add(food);
         }
-    }
-
-    @Override
-    public List<Food> findAll() {
-        return foods;
     }
 
     @Override
     public List<Food> clear() {
-        foods.stream()
-                .filter((food) -> isExpired(75, 100, food))
+        findAll().stream()
+                .filter((food) -> isExpired(DISCOUNT_FROM, TRASH_FROM, food))
                 .forEach((food -> food.setPrice(getDiscountPrice(food))));
-        List<Food> rsl = foods.stream()
-                .filter((food) -> !isExpired(25, 100, food))
+        List<Food> rsl = findAll().stream()
+                .filter((food) -> !isExpired(SHOP_FROM, TRASH_FROM, food))
                 .toList();
-        foods.removeAll(rsl);
+        super.removeAll(rsl);
         return rsl;
     }
 
