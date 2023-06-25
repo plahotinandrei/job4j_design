@@ -2,14 +2,9 @@ package ru.job4j.ood.lsp.parking;
 
 public class SpaceForCar implements ParkingSpace {
 
-    private final VehicleType type = VehicleType.CAR;
     private boolean available = true;
     private Vehicle parkedVehicle;
-
-    @Override
-    public VehicleType getType() {
-        return type;
-    }
+    private final boolean isStandard = true;
 
     @Override
     public boolean isAvailable() {
@@ -25,6 +20,11 @@ public class SpaceForCar implements ParkingSpace {
             available = false;
         }
         return rsl;
+    }
+
+    @Override
+    public boolean isStandard() {
+        return isStandard;
     }
 
     @Override

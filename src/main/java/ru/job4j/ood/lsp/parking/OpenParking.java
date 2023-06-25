@@ -19,25 +19,25 @@ public class OpenParking implements Parking {
     public boolean parkVehicle(Vehicle vehicle) {
         boolean rsl = false;
         for (ParkingSpace space:parkingSpaces) {
-            if (space.isAvailable() && vehicle.getType().equals(space.getType())) {
+            if (space.isAvailable() && !space.isStandard()) {
                 rsl = space.parkVehicle(vehicle);
                 break;
             }
         }
         if (!rsl) {
-            List<ParkingSpace> spaces = findFreeSimpleSpacesSuccession(parkingSpaces, vehicle.getSize());
+            List<ParkingSpace> spaces = findFreeStandardSpacesSuccession(parkingSpaces, vehicle.getSize());
             spaces.forEach(space -> space.parkVehicle(vehicle));
             rsl = !spaces.isEmpty();
         }
         return rsl;
     }
 
-    private List<ParkingSpace> findFreeSimpleSpacesSuccession(List<ParkingSpace> spaces, int size) {
+    private List<ParkingSpace> findFreeStandardSpacesSuccession(List<ParkingSpace> spaces, int size) {
         List<ParkingSpace> rsl = List.of();
         int start = 0;
         int end = 0;
         for (ParkingSpace space:spaces) {
-            if (spaceIsSimple(space) && space.isAvailable()) {
+            if (space.isStandard() && space.isAvailable()) {
                 end++;
                 if (end - start == size) {
                     rsl = spaces.subList(start, end);
@@ -49,9 +49,5 @@ public class OpenParking implements Parking {
             }
         }
         return rsl;
-    }
-
-    private boolean spaceIsSimple(ParkingSpace space) {
-        return VehicleType.CAR.equals(space.getType());
     }
 }
