@@ -37,7 +37,6 @@ class OpenParkingTest {
         Parking parking = new OpenParking(List.of(space1, space2));
         Vehicle vehicle1 = new Truck("A222CB12", "KIA", 2);
         Vehicle vehicle2 = new Truck("B412EY43", "Honda", 3);
-        parking.parkVehicle(vehicle1);
         boolean isParked1 = parking.parkVehicle(vehicle1);
         boolean isParked2 = parking.parkVehicle(vehicle2);
         assertThat(isParked1).isTrue();

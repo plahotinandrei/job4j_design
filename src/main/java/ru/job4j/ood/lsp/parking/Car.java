@@ -1,6 +1,7 @@
 package ru.job4j.ood.lsp.parking;
 
 public class Car implements Vehicle {
+
     private final String regNumber;
     private final String name;
     private final VehicleType type = VehicleType.CAR;
@@ -13,21 +14,21 @@ public class Car implements Vehicle {
 
     @Override
     public String getRegNumber() {
-        return null;
+        return regNumber;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public VehicleType getType() {
-        return null;
+        return type;
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 }

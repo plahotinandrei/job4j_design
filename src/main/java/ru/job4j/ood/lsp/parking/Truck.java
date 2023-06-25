@@ -15,21 +15,21 @@ public class Truck implements Vehicle {
 
     @Override
     public String getRegNumber() {
-        return null;
+        return regNumber;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public VehicleType getType() {
-        return null;
+        return type;
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 }
